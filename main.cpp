@@ -83,7 +83,6 @@ void PersonalAssistent :: calculate()
     cout << "3. double" << endl;
     cout << "Enter choice: ";
     cin >> choice;
-    cin.ignore();
     switch (choice)
     {
         case 1:
@@ -153,4 +152,5 @@ int main()
     PersonalAssistent assistent;
     assistent.start();
     return 0;
+
 }
