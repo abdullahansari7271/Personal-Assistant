@@ -1,4 +1,4 @@
-Personal Assistant (C++ Console Application)
+# Personal Assistant (C++ Console Application)
 
 This project is a console-based Personal Assistant developed in C++.
 It provides basic assistant-like functionalities such as opening applications, displaying the current time, performing calculations, and handling files. The program is menu-driven and interacts with the user through text commands in the terminal.
