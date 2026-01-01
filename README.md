@@ -41,13 +41,13 @@ iostream
 
 ctime
 
-# Caution
-
-This C++ program is only suitable to windows only not for mac at the time. So, in future when we will get to know about more dept and more libraries of C== we will make sure to resolve that issue.
-(cstdlib) function system used in this program used start to open websites and apps that is only for windows but mac for mac it uses open and calc is not in mac. 
-
 fstream
 
 cstdlib
 
 <algorithm>
+
+# Caution
+
+This C++ program is only suitable to windows only not for mac at the time. So, in future when we will get to know about more dept and more libraries of C== we will make sure to resolve that issue.
+(cstdlib) function system used in this program used start to open websites and apps that is only for windows but mac for mac it uses open and calc is not in mac. 
