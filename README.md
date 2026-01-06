@@ -56,4 +56,5 @@ conio.h
 
 # Caution
 
+For mac user: Comments are written in the c++ file to replace start with open.
 
