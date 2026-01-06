@@ -3,6 +3,7 @@
 #include<fstream>
 #include<cstdlib>
 #include<algorithm>
+#include<conio.h>
 using namespace std;
 
 class PersonalAssistent
@@ -17,30 +18,101 @@ class PersonalAssistent
         template <typename T>
         void calculateTemplate();
 };
+
+class LoginToAssistent : public PersonalAssistent
+{ 
+    public: 
+        bool login();
+};
+
+string gethiddenpassword()
+{
+    string password;
+    char ch;
+    while(true)
+    {
+        ch = _getch();
+        if(ch == 13)
+        {
+            break;
+        }
+        else if(ch == 8)
+        {
+            if(!password.empty())
+            {
+                password.pop_back();
+                cout << "\b \b";
+            }
+        }
+        else
+        {
+            password.push_back(ch);
+            cout << "*";
+        }
+    }
+    cout << endl;
+    return password;
+}
+
+bool LoginToAssistent :: login()
+{
+    string userid,pass;
+    string Fileid,Filepass;
+    cout << "=============LOGIN=============" << endl;
+    cout << "USER ID: ";
+    cin >> userid;
+    cout << "PASSWORD: ";
+    pass = gethiddenpassword();
+    ifstream file("user.txt");
+    if(!file)
+    {
+        cout << "User database not found" << endl;
+        return false;
+    }
+    while(file >> Fileid >> Filepass)
+    {
+        if(!Filepass.empty() && Filepass.back() == '\r')
+            Filepass.pop_back();
+        if(userid == Fileid && pass == Filepass)
+        {
+            cout << "LOGGED IN SUCCESSFULLY" << endl;
+            cin.ignore();
+            return true;
+        }
+    }
+    cout << "\nInvalid ID or Password!\n";
+    return false;
+}
+
 void PersonalAssistent :: openApp(string prompt)
 {
     transform(prompt.begin(),prompt.end(),prompt.begin(), :: tolower);
     if(prompt == "open chatgpt")
     {
-        system("start https://chatgpt.com/");
+        system("start https://chatgpt.com/");  //open in place of start for mac 
     }
     else if(prompt == "open youtube")
     {
-        system("start https://www.youtube.com/");
+        system("start https://www.youtube.com/"); //open in place of start for mac 
     }
-    else if(prompt == "open chrome")
+    else if(prompt == "open chrome") 
     {
-        system("start chrome");
+        system("start chrome"); //open in place of start for mac 
     }
     else if(prompt == "open calculator")
     {
-        system("start calc");
+        system("start calc"); //open in place of start for mac and write Calculator in place of calc
+    }
+    else if(prompt == "open gemini")
+    {
+        system("start https://gemini.google.com/app"); //open in place of start for mac
     }
     else 
     {
         cout << "Äpplication not found" << endl;
     }
 }
+
 template <typename T>
 void PersonalAssistent :: calculateTemplate()
 {
@@ -74,6 +146,7 @@ void PersonalAssistent :: calculateTemplate()
     }
     cin.ignore();
 }
+
 void PersonalAssistent :: calculate() 
 {
     int choice;
@@ -99,11 +172,13 @@ void PersonalAssistent :: calculate()
     }
     cin.ignore();
 }
+
 void PersonalAssistent :: showtime()
 {
     time_t now = time(0);
     cout << "Current date & time: " << ctime(&now);
 }
+
 void PersonalAssistent :: filehandling()
 {
     ofstream file("notes.txt" , ios::app);
@@ -114,12 +189,14 @@ void PersonalAssistent :: filehandling()
     file.close();
     cout << "Note saved succesfully" << endl;
 }
+
 void PersonalAssistent :: start()
 {
     string command;
-    cout << "*****************\nPersonal Assistent\n*****************" << endl;
+    cout << "=====================\nPersonal Assistent\n=====================" << endl;
     cout << "Commands: " << endl;
     cout << "-open chatgpt" << endl;
+    cout << "-open gemini" << endl;
     cout << "-open chrome" << endl;
     cout << "-open youtube" << endl;
     cout << "-open calculator" << endl;
@@ -147,10 +224,17 @@ void PersonalAssistent :: start()
     }
     cout << "Goodbye" << endl;
 }
+
 int main()
 {
-    PersonalAssistent assistent;
-    assistent.start();
+    LoginToAssistent assistent;
+    if(assistent.login())
+    {
+        assistent.start();
+    }
+    else
+    {
+        cout << "ACCESS DENIED" << endl;
+    }
     return 0;
-
 }
