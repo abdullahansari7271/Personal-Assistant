@@ -56,5 +56,5 @@ conio.h
 
 # Caution
 
-For mac user: Comments are written in the c++ file to replace start with open.
+For mac user: Comments are written in the c++ file to replace start with open and conio.h is only windows specific ,there are multiple others for mac so in this case private password input will not be available for mac users.
 
