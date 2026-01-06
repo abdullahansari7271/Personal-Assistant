@@ -1,11 +1,14 @@
 # Personal Assistant (C++ Console Application)
 
 This project is a console-based Personal Assistant developed in C++.
-It provides basic assistant-like functionalities such as opening applications, displaying the current time, performing calculations, and handling files. The program is menu-driven and interacts with the user through text commands in the terminal.
+First User have to write userid and password to interact with the personal assistent. user.txt is the file where the userid and password must be written to let the personal assistent run. If userid and password written on the terminal does not matches then it will tell incorrect id or pass,
+It provides basic assistant-like functionalities such as opening applications, displaying the current time, performing calculations, and handling files after logging in. The program is menu-driven and interacts with the user through text commands in the terminal.
 
 The main goal of this project is to demonstrate core C++ concepts including:
 
 Object-Oriented Programming (OOP)
+
+Inhertance 
 
 Functions and templates
 
@@ -16,6 +19,8 @@ Standard Library usage
 User input processing
 
 # Features
+
+Login System
 
 Display current system time
 
@@ -47,7 +52,8 @@ cstdlib
 
 algorithm
 
+conio.h
+
 # Caution
 
-This C++ program is only suitable to windows only not for mac at the time. So, in future when we will get to know about more dept and more libraries of C++ we will make sure to resolve that issue.
-(cstdlib) function system used in this program used start to open websites and apps that is only for windows but for mac it uses open and calc is not in mac. 
+
